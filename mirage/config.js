@@ -1,37 +1,37 @@
-export default function() {
+export default function () {
   this.namespace = 'api';
 
   this.get('/products', function () {
     return {
       data: [
         {
-          type: "products",
+          type: 'products',
           id: 1,
           attributes: {
-            name: "Green tea",
+            name: 'Green tea',
             price: 3.11,
-            image: "https://cdn-prod.medicalnewstoday.com/content/images/articles/269/269538/green-tea-in-a-cup.jpg"
-          }
+            image: 'img/green-tea.jpg',
+          },
         },
         {
-          type: "products",
+          type: 'products',
           id: 2,
           attributes: {
-            name: "Strawberries",
-            price: 5.00,
-            image: "https://www.whatchefswant.com/wp-content/uploads/2019/02/strawberries.jpg"
-          }
+            name: 'Strawberries',
+            price: 5.0,
+            image: 'img/strawberries.jpg',
+          },
         },
         {
-          type: "products",
+          type: 'products',
           id: 3,
           attributes: {
-            name: "Coffee",
+            name: 'Coffee',
             price: 11.23,
-            image: "https://athome.starbucks.com/sites/site.prod.athome.starbucks.com/files/2019-06/CoffeeFinder_ArticleHeader_Desktop_1176x712.jpg"
-          }
-        }
-      ]
-    }
+            image: 'img/coffee.jpg',
+          },
+        },
+      ],
+    };
   });
 }
