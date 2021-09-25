@@ -6,14 +6,17 @@
     </div>
     <div class='flex flex-col justify-between ml-4 flex-grow'>
       <span class='font-bold text-sm'>{{@product.name}}</span>
-      <a
-        href='#'
+      <a href="#"
+        {{on 'click' (fn this.clearItem @product.id)}}
         class='font-semibold hover:text-red-500 text-gray-500 text-xs'
       >Remove</a>
     </div>
   </div>
   <div class='flex justify-center w-1/5'>
-    <button type='button' {{on 'click' this.removeItem}}>
+    <button
+      type='button'
+      {{on 'click' (fn this.removeItem @product.id @product.price)}}
+    >
       <svg class='fill-current text-gray-600 w-3' viewBox='0 0 448 512'><path
           d='M416 208H32c-17.67 0-32 14.33-32 32v32c0 17.67 14.33 32 32 32h384c17.67 0 32-14.33 32-32v-32c0-17.67-14.33-32-32-32z'
         ></path>
@@ -27,7 +30,10 @@
       value='{{this.quantity}}'
     />
 
-    <button type='button' {{on 'click' this.addItem}}>
+    <button
+      type='button'
+      {{on 'click' (fn this.addItem @product.id @product.price)}}
+    >
       <svg class='fill-current text-gray-600 w-3' viewBox='0 0 448 512'>
         <path
           d='M416 208H272V64c0-17.67-14.33-32-32-32h-32c-17.67 0-32 14.33-32 32v144H32c-17.67 0-32 14.33-32 32v32c0 17.67 14.33 32 32 32h144v144c0 17.67 14.33 32 32 32h32c17.67 0 32-14.33 32-32V304h144c17.67 0 32-14.33 32-32v-32c0-17.67-14.33-32-32-32z'
@@ -39,7 +45,5 @@
   <span
     class='text-center w-1/5 font-semibold text-sm'
   >{{@product.price}}</span>
-  <span
-    class='text-center w-1/5 font-semibold text-sm'
-  >{{@prodduct.price}}</span>
+  <span class='text-center w-1/5 font-semibold text-sm'>{{this.total}}</span>
 </div>
