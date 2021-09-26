@@ -10,7 +10,7 @@
       <a
         href="#"
         class="font-semibold hover:text-red-500 text-gray-500 text-xs"
-        {{on 'click' (fn this.clearItem @product.id)}}
+        {{on 'click' (fn this.clearItem @product)}}
       >
         Remove
       </a>
@@ -19,7 +19,7 @@
   <div class="flex justify-center w-1/5">
     <button
       type="button"
-      {{on 'click' (fn this.removeItem @product.id @product.price)}}
+      {{on 'click' (fn this.removeItem @product)}}
     >
       <svg class="fill-current text-gray-600 w-3" viewBox="0 0 448 512">
         <path

@@ -16,7 +16,8 @@ export default class Product extends Component {
   @action
   removeItem(product) {
     this.quantity >= 1 ? this.quantity-- : 0;
-    this.total = this.quantity >= 1 ? (this.total - product.price).toFixed(2) : 0;
+    this.total =
+      this.quantity >= 1 ? (this.total - product.price).toFixed(2) : 0;
     this.args.updateItem(product, this.quantity, this.total);
   }
 
