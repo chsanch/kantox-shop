@@ -11,7 +11,8 @@ export default class ShoppingCartService extends Service {
     this.storage.summary = tracked({ total: 0, items: 0, discount: 0, total_cost: 0 });
   }
 
-  update(id, quantity, total, price) {
+  update(product, quantity, total) {
+    const { id, price } = product
     const itemId = this.storage.items.findIndex(
       (item) => item.product_id === id
     );

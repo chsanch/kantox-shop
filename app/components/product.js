@@ -7,23 +7,23 @@ export default class Product extends Component {
   @tracked total = 0;
 
   @action
-  addItem(itemId, itemPrice) {
+  addItem(product) {
     this.quantity++;
-    this.total = (this.quantity * itemPrice).toFixed(2);
-    this.args.updateItem(itemId, this.quantity, this.total, itemPrice);
+    this.total = (this.quantity * product.price).toFixed(2);
+    this.args.updateItem(product, this.quantity, this.total);
   }
 
   @action
-  removeItem(itemId, itemPrice) {
+  removeItem(product) {
     this.quantity >= 1 ? this.quantity-- : 0;
-    this.total = this.quantity >= 1 ? (this.total - itemPrice).toFixed(2) : 0;
-    this.args.updateItem(itemId, this.quantity, this.total);
+    this.total = this.quantity >= 1 ? (this.total - product.price).toFixed(2) : 0;
+    this.args.updateItem(product, this.quantity, this.total);
   }
 
   @action
-  clearItem(itemId) {
+  clearItem(product) {
     this.quantity = 0;
     this.total = 0;
-    this.args.clearItem(itemId);
+    this.args.clearItem(product.id);
   }
 }
