@@ -38,18 +38,20 @@
       {{#each @products as |product|}}
         <CheckoutItem @product={{product}} @clearItem={{this.clearItem}} />
       {{/each}}
-      <div class="flex items-center hover:bg-gray-100 -mx-8 px-6 py-5">
+      <div class="flex items-center hover:bg-gray-100 -mx-8 px-6 py-5 border-t-2 border-b-2">
         <div class="flex w-2/5"></div>
         <div class="flex justify-center w-1/5"></div>
-        <span class="text-center w-1/5 font-semibold text-sm"></span>
-        <span class="text-center w-1/5 font-semibold text-sm">
-          {{this.cart.storage.summary.discount}}
+        <span class="text-center w-1/5 font-black text-sm">
+          {{currency-parser this.cart.storage.summary.total}}
         </span>
-        <span class="text-center w-1/5 font-semibold text-sm">
-          {{this.cart.storage.summary.total}}
+        <span class="text-center w-1/5 font-black text-sm">
+          {{currency-parser this.cart.storage.summary.discount}}
+        </span>
+        <span class="text-center w-1/5 font-black text-sm">
+          {{currency-parser this.cart.storage.summary.total_cost}}
         </span>
       </div>
-      <div class="flex justify-center border-t-2 pb-8">
+      <div class="flex justify-center">
         <button
           type="button"
           class="w-auto my-2 px-6 py-2 text-blue-200 bg-blue-600 hover:bg-blue-900"

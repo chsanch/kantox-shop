@@ -45,9 +45,9 @@
     </button>
   </div>
   <span class="text-center w-1/5 font-semibold text-sm">
-    {{@product.price}}
+    {{currency-parser @product.price @product.currency}}
   </span>
   <span class="text-center w-1/5 font-semibold text-sm">
-    {{this.total}}
+    {{currency-parser this.total @product.currency}}
   </span>
 </div>

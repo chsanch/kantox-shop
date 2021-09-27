@@ -69,7 +69,7 @@ export default class ShoppingCartService extends Service {
       totalPrice += Number(item.total);
     });
     this.storage.summary.items = Number(totalItems);
-    this.storage.summary.total = Number(totalPrice).toFixed(2);
+    this.storage.summary.total = Number(totalPrice);
   }
 
   _calculateDiscounts() {
@@ -80,6 +80,6 @@ export default class ShoppingCartService extends Service {
     this.storage.summary.discount = Number(discount);
     this.storage.summary.total_cost = (
       this.storage.summary.total - discount
-    ).toFixed(2);
+    );
   }
 }

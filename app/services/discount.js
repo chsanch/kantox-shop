@@ -19,6 +19,6 @@ export default class Discount {
       discount = discount + price * (1 / 3) * quantity;
     }
 
-    return discount.toFixed(2);
+    return discount;
   }
 }

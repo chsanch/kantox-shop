@@ -12,7 +12,7 @@ export default class CheckoutSummaryComponent extends Component {
   }
 
   @action
-  checkout(){
+  checkout() {
     this.cart.checkout();
     this.router.transitionTo('products');
   }

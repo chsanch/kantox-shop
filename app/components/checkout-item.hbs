@@ -25,12 +25,12 @@
     />
   </div>
   <span class="text-center w-1/5 font-semibold text-sm">
-    {{@product.total}}
+    {{currency-parser @product.total @product.currency}}
   </span>
   <span class="text-center w-1/5 font-semibold text-sm">
-    {{@product.discount}}
+    {{currency-parser @product.discount @product.currency}}
   </span>
   <span class="text-center w-1/5 font-semibold text-sm">
-    {{this.totalCost}}
+    {{currency-parser this.totalCost}}
   </span>
 </div>

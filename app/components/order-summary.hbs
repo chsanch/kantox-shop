@@ -8,7 +8,7 @@
       {{@summary.items}}
     </span>
     <span class="font-semibold text-sm">
-      {{@summary.total}}
+      {{currency-parser @summary.total}}
     </span>
   </div>
   <div class="py-10">
@@ -17,7 +17,7 @@
         Discount
       </span>
       <span>
-        {{@summary.discount}}
+        {{currency-parser @summary.discount}}
       </span>
     </div>
   </div>
@@ -27,7 +27,7 @@
         Total cost
       </span>
       <span>
-        {{@summary.total_cost}}
+        {{currency-parser @summary.total_cost}}
       </span>
     </div>
     <button
