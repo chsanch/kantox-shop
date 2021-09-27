@@ -1,0 +1,4 @@
+<div class="flex shadow-md my-10">
+  <ProductsList @products={{@products}} @cart={{this.cart}} />
+  <OrderSummary @summary={{this.cart.storage.summary}} />
+</div>
