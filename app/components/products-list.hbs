@@ -1,0 +1,39 @@
+<div class="w-3/4 bg-white px-10 py-10">
+  <div class="flex justify-between border-b pb-8">
+    <h1 class="font-semibold text-2xl">
+      Available Products
+    </h1>
+    <h2 class="font-semibold text-2xl">
+      {{@products.length}}
+      Items
+    </h2>
+  </div>
+  <div class="flex mt-10 mb-5">
+    <h3 class="font-semibold text-gray-600 text-xs uppercase w-2/5">
+      Product Details
+    </h3>
+    <h3
+      class="font-semibold text-center text-gray-600 text-xs uppercase w-1/5 text-center"
+    >
+      Quantity
+    </h3>
+    <h3
+      class="font-semibold text-center text-gray-600 text-xs uppercase w-1/5 text-center"
+    >
+      Price
+    </h3>
+    <h3
+      class="font-semibold text-center text-gray-600 text-xs uppercase w-1/5 text-center"
+    >
+      Total
+    </h3>
+  </div>
+  {{#each @products as |product|}}
+    <Product
+      @product={{product}}
+      @items={{@cart.storage.items}}
+      @updateItem={{this.updateItem}}
+      @clearItem={{this.clearItem}}
+    />
+  {{/each}}
+</div>

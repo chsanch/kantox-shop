@@ -1,0 +1,71 @@
+<div class="flex shadow-md my-10">
+  {{#if @products.length}}
+    <div class="w-full bg-white px-10 py-10">
+      <div class="flex justify-between border-b pb-8">
+        <h1 class="font-semibold text-2xl">
+          Checkout
+        </h1>
+        <h2 class="font-semibold text-2xl">
+          {{@products.length}}
+          Items
+        </h2>
+      </div>
+      <div class="flex mt-10 mb-5">
+        <h3 class="font-semibold text-gray-600 text-xs uppercase w-2/5">
+          Product Details
+        </h3>
+        <h3
+          class="font-semibold text-center text-gray-600 text-xs uppercase w-1/5 text-center"
+        >
+          Quantity
+        </h3>
+        <h3
+          class="font-semibold text-center text-gray-600 text-xs uppercase w-1/5 text-center"
+        >
+          Total
+        </h3>
+        <h3
+          class="font-semibold text-center text-gray-600 text-xs uppercase w-1/5 text-center"
+        >
+          Discount
+        </h3>
+        <h3
+          class="font-semibold text-center text-gray-600 text-xs uppercase w-1/5 text-center"
+        >
+          Total Cost
+        </h3>
+      </div>
+      {{#each @products as |product|}}
+        <CheckoutItem @product={{product}} @clearItem={{this.clearItem}} />
+      {{/each}}
+      <div class="flex items-center hover:bg-gray-100 -mx-8 px-6 py-5 border-t-2 border-b-2">
+        <div class="flex w-2/5"></div>
+        <div class="flex justify-center w-1/5"></div>
+        <span class="text-center w-1/5 font-black text-sm">
+          {{currency-parser this.cart.storage.summary.total}}
+        </span>
+        <span class="text-center w-1/5 font-black text-sm">
+          {{currency-parser this.cart.storage.summary.discount}}
+        </span>
+        <span class="text-center w-1/5 font-black text-sm">
+          {{currency-parser this.cart.storage.summary.total_cost}}
+        </span>
+      </div>
+      <div class="flex justify-center">
+        <button
+          type="button"
+          class="w-auto my-2 px-6 py-2 text-blue-200 bg-blue-600 hover:bg-blue-900"
+          {{on 'click' this.checkout}}
+        >
+          Process
+        </button>
+      </div>
+    </div>
+  {{else}}
+    <div class="w-full bg-white px-10 py-10">
+      <h3>
+        No items to display
+      </h3>
+    </div>
+  {{/if}}
+</div>
