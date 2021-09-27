@@ -11,6 +11,8 @@ export default function () {
             name: 'Green tea',
             price: 3.11,
             image: 'img/green-tea.jpg',
+            code: 'GR1',
+            currency: '£',
           },
         },
         {
@@ -20,6 +22,8 @@ export default function () {
             name: 'Strawberries',
             price: 5.0,
             image: 'img/strawberries.jpg',
+            code: 'SR1',
+            currency: '£',
           },
         },
         {
@@ -29,6 +33,8 @@ export default function () {
             name: 'Coffee',
             price: 11.23,
             image: 'img/coffee.jpg',
+            code: 'CF1',
+            currency: '£',
           },
         },
       ],

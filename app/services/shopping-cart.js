@@ -1,6 +1,7 @@
 import { A } from '@ember/array';
 import Service from '@ember/service';
 import { tracked } from 'tracked-built-ins';
+import Discount from './discount';
 
 export default class ShoppingCartService extends Service {
   storage = {};
@@ -14,6 +15,7 @@ export default class ShoppingCartService extends Service {
       discount: 0,
       total_cost: 0,
     });
+    this.discount = new Discount();
   }
 
   update(product, quantity, total) {
@@ -25,10 +27,15 @@ export default class ShoppingCartService extends Service {
         ...product.toJSON({ includeId: true }),
         quantity: quantity,
         total: total,
+        discount: 0,
       });
     } else {
       this.storage.items[itemId].quantity = Number(quantity);
       this.storage.items[itemId].total = Number(total);
+      this.storage.items[itemId].discount = this.discount.getDiscount(
+        product,
+        quantity
+      );
     }
     this._calculateSummary();
     this._calculateDiscounts();
@@ -44,6 +51,16 @@ export default class ShoppingCartService extends Service {
     }
   }
 
+  checkout() {
+    this.storage.items = tracked(A([]));
+    this.storage.summary = tracked({
+      total: 0,
+      items: 0,
+      discount: 0,
+      total_cost: 0,
+    });
+  }
+
   _calculateSummary() {
     let totalItems = 0;
     let totalPrice = 0;
@@ -56,37 +73,11 @@ export default class ShoppingCartService extends Service {
   }
 
   _calculateDiscounts() {
-    // Tea
-    const tea = this.storage.items.find(
-      (item) => item.id === '1' && item.quantity >= 2
-    );
-    const strawberry = this.storage.items.find(
-      (item) => item.id === '2' && item.quantity >= 3
-    );
-    const coffee = this.storage.items.find(
-      (item) => item.id === '3' && item.quantity >= 3
-    );
     let discount = 0;
-
-    if (tea) {
-      const { quantity, price } = tea;
-      discount =
-        discount + (quantity % 2) === 0
-          ? (quantity * price) / 2
-          : ((quantity - 1) * price) / 2;
-    }
-
-    if (strawberry) {
-      const { quantity, price } = strawberry;
-      discount = discount + (price - 4.5) * quantity;
-    }
-
-    if (coffee) {
-      const { quantity, price } = coffee;
-      discount = discount + price * (1 / 3) * quantity;
-    }
-
-    this.storage.summary.discount = discount.toFixed(2);
+    this.storage.items.forEach((item) => {
+      discount += Number(item.discount);
+    });
+    this.storage.summary.discount = Number(discount);
     this.storage.summary.total_cost = (
       this.storage.summary.total - discount
     ).toFixed(2);

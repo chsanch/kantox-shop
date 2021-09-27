@@ -31,6 +31,7 @@
   {{#each @products as |product|}}
     <Product
       @product={{product}}
+      @items={{@cart.storage.items}}
       @updateItem={{this.updateItem}}
       @clearItem={{this.clearItem}}
     />
