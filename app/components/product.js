@@ -28,12 +28,16 @@ export default class Product extends Component {
   }
 
   _getQuantity(product) {
-    const item = this.args.items.find((item) => item.id === product.id);
+    const item = this.args.items
+      ? this.args.items.find((item) => item.id === product.id)
+      : null;
     return item ? item.quantity : 0;
   }
 
   _getTotal(product) {
-    const item = this.args.items.find((item) => item.id === product.id);
+    const item = this.args.items
+      ? this.args.items.find((item) => item.id === product.id)
+      : null;
     return item ? item.total : 0;
   }
 }

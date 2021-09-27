@@ -78,8 +78,6 @@ export default class ShoppingCartService extends Service {
       discount += Number(item.discount);
     });
     this.storage.summary.discount = Number(discount);
-    this.storage.summary.total_cost = (
-      this.storage.summary.total - discount
-    );
+    this.storage.summary.total_cost = this.storage.summary.total - discount;
   }
 }

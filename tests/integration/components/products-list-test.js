@@ -12,15 +12,6 @@ module('Integration | Component | products-list', function (hooks) {
 
     await render(hbs`<ProductsList />`);
 
-    assert.dom(this.element).hasText('');
-
-    // Template block usage:
-    await render(hbs`
-      <ProductsList>
-        template block text
-      </ProductsList>
-    `);
-
-    assert.dom(this.element).hasText('template block text');
+    assert.dom(this.element).hasText('Available Products Items Product Details Quantity Price Total');
   });
 });

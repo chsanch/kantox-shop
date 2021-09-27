@@ -12,15 +12,15 @@ module('Integration | Component | checkout-item', function (hooks) {
 
     await render(hbs`<CheckoutItem />`);
 
-    assert.dom(this.element).hasText('');
+    assert.dom(this.element).hasText('Remove £0 £0 £0');
 
-    // Template block usage:
-    await render(hbs`
-      <CheckoutItem>
-        template block text
-      </CheckoutItem>
-    `);
+    // // Template block usage:
+    // await render(hbs`
+    //   <CheckoutItem>
+    //     template block text
+    //   </CheckoutItem>
+    // `);
 
-    assert.dom(this.element).hasText('template block text');
+    // assert.dom(this.element).hasText('');
   });
 });

@@ -12,15 +12,7 @@ module('Integration | Component | checkout-summary', function (hooks) {
 
     await render(hbs`<CheckoutSummary />`);
 
-    assert.dom(this.element).hasText('');
+    assert.dom(this.element).hasText('No items to display');
 
-    // Template block usage:
-    await render(hbs`
-      <CheckoutSummary>
-        template block text
-      </CheckoutSummary>
-    `);
-
-    assert.dom(this.element).hasText('template block text');
   });
 });

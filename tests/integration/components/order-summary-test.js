@@ -12,15 +12,7 @@ module('Integration | Component | order-summary', function (hooks) {
 
     await render(hbs`<OrderSummary />`);
 
-    assert.dom(this.element).hasText('');
+    assert.dom(this.element).hasText('Order Summary Items: £0 Discount £0 Total cost £0 Checkout');
 
-    // Template block usage:
-    await render(hbs`
-      <OrderSummary>
-        template block text
-      </OrderSummary>
-    `);
-
-    assert.dom(this.element).hasText('template block text');
   });
 });

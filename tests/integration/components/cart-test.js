@@ -12,15 +12,6 @@ module('Integration | Component | cart', function (hooks) {
 
     await render(hbs`<Cart />`);
 
-    assert.dom(this.element).hasText('');
-
-    // Template block usage:
-    await render(hbs`
-      <Cart>
-        template block text
-      </Cart>
-    `);
-
-    assert.dom(this.element).hasText('template block text');
+    assert.dom(this.element).hasText('Available Products Items Product Details Quantity Price Total Order Summary Items: 0 £0 Discount £0 Total cost £0 Checkout');
   });
 });
